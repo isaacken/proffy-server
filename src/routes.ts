@@ -13,6 +13,4 @@ routes.post('/classes', classesController.create);
 routes.get('/connections', connectionsController.index);
 routes.post('/connections', connectionsController.create);
 
-routes.get('/teste', function() { console.log(process.env.DB_HOST); });
-
 export default routes;
