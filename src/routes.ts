@@ -19,8 +19,8 @@ routes.get('/teste', function () {
     "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name";
 
   const r = db.raw(query);
-
-  return response.json(r);
+  console.log(r);
+  return response.send();
 });
 
 export default routes;
