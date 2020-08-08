@@ -2,8 +2,6 @@ import knex from 'knex';
 
 require('dotenv').config();
 
-console.log(process.env.DB_HOST);
-
 const db = knex({
   client: 'postgresql',
   connection: {
