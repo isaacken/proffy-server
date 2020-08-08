@@ -18,7 +18,8 @@ routes.get('/teste', async function () {
   const query =
     "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name";
 
-  db.schema.raw(query).then(a => { console.log(a) });
+  const a = db.schema.raw(query);
+  console.log(a);
   
   return response.send();
 });
