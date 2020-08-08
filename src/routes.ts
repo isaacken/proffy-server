@@ -13,7 +13,4 @@ routes.post('/classes', classesController.create);
 routes.get('/connections', connectionsController.index);
 routes.post('/connections', connectionsController.create);
 
-require('dotenv').config();
-routes.get('/', () => { console.log(process.env.DB_HOST); response.send() });
-
 export default routes;
