@@ -55,20 +55,24 @@ export default class ClassesController {
     const trx = await db.transaction();
   
     try {
-      const insertedUsersIds = await trx('users').insert({
-        name,
-        avatar,
-        whatsapp,
-        bio
-      });
+      const insertedUsersIds = await trx('users')
+        .returning('id')
+        .insert({
+          name,
+          avatar,
+          whatsapp,
+          bio
+        });
     
       const user_id = insertedUsersIds[0];
     
-      const insertedClassesId = await trx('classes').insert({
-        subject,
-        cost,
-        user_id
-      });
+      const insertedClassesId = await trx('classes')
+        .returning('id')
+        .insert({
+          subject,
+          cost,
+          user_id
+        });
     
       const class_id = insertedClassesId[0];
     
