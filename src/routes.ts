@@ -14,12 +14,14 @@ routes.post('/classes', classesController.create);
 routes.get('/connections', connectionsController.index);
 routes.post('/connections', connectionsController.create);
 
-routes.get('/teste', function () {
+routes.get('/teste', async function () {
   const query =
     "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name";
 
-  const r = db.raw(query);
-  console.log(r);
+  const r = db.raw(query).then(data => {
+    console.log(data);
+  });
+  
   return response.send();
 });
 
