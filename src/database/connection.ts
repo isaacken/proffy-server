@@ -1,10 +1,18 @@
 import knex from 'knex';
-import path from 'path';
+
+require('dotenv').config();
 
 const db = knex({
-  client: 'sqlite3',
+  client: 'postgresql',
   connection: {
-    filename: path.resolve(__dirname, 'database.sqlite')
+    host:     process.env.DB_HOST,
+    port:     Number(process.env.DB_PORT),
+    database: process.env.DB_NAME,
+    user:     process.env.DB_USER,
+    password: process.env.DB_PASS,
+    ssl: {
+      rejectUnauthorized: false
+    }    
   },
   useNullAsDefault: true
 });
